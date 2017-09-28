@@ -1,0 +1,37 @@
+import { TestBed } from '@angular/core/testing';
+import { Order } from './order';
+
+class OrderFactory {
+  
+    public static createWithPrice(priceInCents: number): Order {
+        return new Order(1, "test description", priceInCents, false);
+    }
+}
+
+describe('Order', () => {
+  
+    it('Cost amount is correct', () => {
+        const order = OrderFactory.createWithPrice(381);
+        expect(order.getCost()).toEqual(3.81);
+    });
+  
+    it('Zero cost is correct', () => {
+        const order = OrderFactory.createWithPrice(0);
+        expect(order.getCost()).toEqual(0.0);
+    });
+  
+    it('Cost string is correct', () => {
+        const order = OrderFactory.createWithPrice(381);
+        expect(order.getCostString()).toEqual("$3.81");
+    });
+  
+    it('Cost string with only cents is correct', () => {
+        const order = OrderFactory.createWithPrice(71);
+        expect(order.getCostString()).toEqual("$0.71");
+    });
+  
+    it('Zero cost string is correct', () => {
+        const order = OrderFactory.createWithPrice(0);
+        expect(order.getCostString()).toEqual("$0.00");
+    });
+});
