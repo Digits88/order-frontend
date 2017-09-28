@@ -3,9 +3,9 @@ import { Order } from './order';
 
 class OrderFactory {
   
-    public static createWithPrice(priceInCents: number): Order {
-        Order order = new Order();
-        order.costInCents = priceInCents;
+    public static createWithPrice(costInCents: number): Order {
+        const order = new Order();
+        order.costInCents = costInCents;
         return order;
     }
 }
@@ -14,26 +14,26 @@ describe('Order', () => {
   
     it('Cost amount is correct', () => {
         const order = OrderFactory.createWithPrice(381);
-        expect(order.getCost()).toEqual(3.81);
+        expect(order.cost).toEqual(3.81);
     });
   
     it('Zero cost is correct', () => {
         const order = OrderFactory.createWithPrice(0);
-        expect(order.getCost()).toEqual(0.0);
+        expect(order.cost).toEqual(0.0);
     });
   
     it('Cost string is correct', () => {
         const order = OrderFactory.createWithPrice(381);
-        expect(order.getCostString()).toEqual("$3.81");
+        expect(order.costString).toEqual("$3.81");
     });
   
     it('Cost string with only cents is correct', () => {
         const order = OrderFactory.createWithPrice(71);
-        expect(order.getCostString()).toEqual("$0.71");
+        expect(order.costString).toEqual("$0.71");
     });
   
     it('Zero cost string is correct', () => {
         const order = OrderFactory.createWithPrice(0);
-        expect(order.getCostString()).toEqual("$0.00");
+        expect(order.costString).toEqual("$0.00");
     });
 });

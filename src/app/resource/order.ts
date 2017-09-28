@@ -10,8 +10,8 @@ export class Order {
 
     id: number; 
     description: string;
-    private costInCents: number; 
-    private complete: boolean;
+    costInCents: number; 
+    complete: boolean;
     _links: OrderLinks;
   
     get isComplete(): boolean {
