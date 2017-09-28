@@ -4,7 +4,9 @@ import { Order } from './order';
 class OrderFactory {
   
     public static createWithPrice(priceInCents: number): Order {
-        return new Order(1, "test description", priceInCents, false);
+        Order order = new Order();
+        order.costInCents = priceInCents;
+        return order;
     }
 }
 

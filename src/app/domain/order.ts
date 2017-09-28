@@ -1,23 +1,34 @@
+import { Href } from './href';
+
+class OrderLinks {
+    self: Href;
+    update: Href;
+    delete: Href;
+}
+
 export class Order {
-    
-    public constructor(
-        public id: number = 1, 
-        public description: string = '', 
-        private priceInCents: number = 0, 
-        public isComplete: boolean = false) {
+
+    id: number; 
+    description: string;
+    private costInCents: number; 
+    private complete: boolean;
+    _links: OrderLinks;
+  
+    get isComplete(): boolean {
+        return this.complete;
     }
   
-    public getCost(): number {
+    get cost(): number {
         
-        if (this.priceInCents === 0) {
+        if (this.costInCents === 0) {
             return 0.0;
         }
         else {
-            return this.priceInCents / 100.0;
+            return this.costInCents / 100.0;
         }
     }
   
-    public getCostString(): string {
-        return `\$${this.getCost().toFixed(2)}`;
+    get costString(): string {
+        return `\$${this.cost.toFixed(2)}`;
     }
 }

@@ -1,0 +1,11 @@
+<div>
+	<strong>Order count:</strong> {{orders?.length}}
+	<ul>
+		<li *ngFor="let order of orders">
+			<strong>ID:</strong> {{order.id}}
+			<strong>Description:</strong> {{order.description}}
+			<strong>Cost:</strong> {{order.costString}}
+			<strong>Is complete:</strong> {{order.isComplete}}
+		</li>
+	</ul>
+</div>
